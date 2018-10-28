@@ -3501,11 +3501,8 @@ namespace AFBaseBase
 				afbasebase.TellAll("Admin "+AFArgs.User.pev.netname+" slayed player "+pTarget.pev.netname, HUD_PRINTTALK);
 				afbasebase.Tell("Slayed player "+pTarget.pev.netname, AFArgs.User, HUD_PRINTCONSOLE);
 				afbasebase.Log("Admin "+AFArgs.User.pev.netname+" slayed player "+pTarget.pev.netname);
-				entvars_t@ world = g_EntityFuncs.Instance(0).pev;
-				//making sure slay works with non-vanilla players (SCXPM/Balancing scripts or when the admin has poked around with _keyvalue health)
-				pTarget.pev.health = 1;
-				pTarget.pev.armorvalue = 0;
-				pTarget.TakeDamage(world, world, 16384.0f, DMG_ALWAYSGIB|DMG_CRUSH);
+				//making DAMN sure slay works with non-vanilla players (SCXPM/Balancing scripts or when the admin has poked around with _keyvalue health)
+				pTarget.Killed( pTarget.pev, GIB_ALWAYS );
 				if(AFBase::IsSafe())
 				{
 					TraceResult tr;
