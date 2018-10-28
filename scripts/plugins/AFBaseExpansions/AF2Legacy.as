@@ -266,6 +266,12 @@ namespace AF2LegacyCode
 		}else if(sKey == "entindex")
 		{
 			return sstring(pEntity.entindex());
+		}else if(sKey == "triggercondition" and pEntity.IsMonster() )
+		{
+			return sstring(cast<CBaseMonster@>(pEntity).m_iTriggerCondition);
+		}else if(sKey == "triggertarget" and pEntity.IsMonster() )
+		{
+			return sstring(cast<CBaseMonster@>(pEntity).m_iszTriggerTarget);
 		}else{
 			return "§§§§N/A";
 		}
